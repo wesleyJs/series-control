@@ -6,7 +6,7 @@
         </h2>
     </x-slot>
 
-    <form action="{{ route('series.store') }}" method="post" class="w-full mt-3">
+    <form action="{{ route('series.store') }}" method="post" class="w-full mt-3" enctype="multipart/form-data">
         @csrf
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
@@ -22,7 +22,7 @@
 
             <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                 <label for="seasonsQty" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">N Temporadas:</label>
-                <input type="text"
+                <input type="number"
                        id="seasonsQty"
                        name="seasonsQty"
                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
@@ -31,11 +31,18 @@
 
             <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
                 <label for="episodesPerSeason" class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">Eps / Temporada:</label>
-                <input type="text"
+                <input type="number"
                        id="episodesPerSeason"
                        name="episodesPerSeason"
                        class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
                        value="{{  old('episodesPerSeason') }}">
+            </div>
+        </div>
+
+        <div class="">
+            <div class="">
+                <label for="cover" class="form-label">Capa</label>
+                <input type="file" id="cover" class="form-control" name="cover" accept="image/gif, image/jpeg, image/png">
             </div>
         </div>
 

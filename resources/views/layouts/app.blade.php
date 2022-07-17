@@ -13,7 +13,7 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans antialiased">
+    <body class="font-sans antialiased bg-amber-50">
         <div class="min-h-screen bg-gray-100">
             @include('layouts.navigation')
 
@@ -25,7 +25,7 @@
             </header>
 
             <!-- Page Content -->
-            <main class="container pl-40 pr-40">
+            <main class="container p-10 mt-5 bg-white">
                 @isset($mensagemSucesso)
                     <div class="alert alert-success alert-dismissible fade show">
                         {{ $mensagemSucesso }}

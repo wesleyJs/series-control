@@ -6,6 +6,7 @@
         </h2>
     </x-slot>
 
+    <img src="{{ asset('storage/' . $series->cover) }}" alt="capa da serie" class="pb-5">
     <ul>
         @foreach ($seasons as $season)
             <li class="flex justify-between border px-5 py-3">

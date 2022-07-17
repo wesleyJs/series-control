@@ -32,4 +32,13 @@ Route::get('/seasons/{season}/episodes', [EpisodeController::class, 'index'])
 Route::post('/seasons/{season}/episodes', [EpisodeController::class, 'update'])
     ->middleware(['auth'])->name('episodes.update');
 
+Route::get('/mail', function () {
+    return new \App\Mail\SeriesCreated(
+        'Serie de teste',
+        1,
+        5,
+        13,
+    );
+});
+
 require __DIR__.'/auth.php';

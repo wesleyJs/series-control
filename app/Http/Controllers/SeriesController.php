@@ -6,7 +6,6 @@ use App\Http\Requests\SeriesFormRequest;
 use App\Models\Season;
 use App\Models\Series;
 use App\Repositores\SeriesRepository;
-use Illuminate\Http\Request;
 
 class SeriesController extends Controller
 {
@@ -29,10 +28,21 @@ class SeriesController extends Controller
 
     public function store(SeriesFormRequest $request)
     {
-        $series = $this->repository->add($request);
+        $coverPath = $request->hasFile('cover')
+            ? $request->file('cover')
+             ->store('series_cover', 'public')
+            : null;
+        $request->coverPath = $coverPath;
+        $serie = $this->repository->add($request);
+        \App\Events\SeriesCreated::dispatch(
+            $serie->nome,
+            $serie->id,
+            $request->seasonsQty,
+            $request->episodesPerSeason,
+        );
 
         return to_route('series.index')
-            ->with('mensagemSucesso', "Série '{$series->nome}' criada com sucesso");
+            ->with('mensagemSucesso', "Série '{$serie->nome}' criada com sucesso");
     }
 
     public function edit(Series $series)
