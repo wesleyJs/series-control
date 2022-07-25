@@ -12,6 +12,7 @@ use Tests\TestCase;
 class SeriesRepositoryTest extends TestCase
 {
     use RefreshDatabase;
+
     public function test_when_a_series_is_created_its_seasons_and_episodes_must_also_be_created()
     {
         //Arrange
